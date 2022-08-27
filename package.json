@@ -1,0 +1,13 @@
+{
+	"name": "slider",
+	"version": "1.0.0",
+	"description": "Slider",
+	"main": "index.js",
+	"scripts": {},
+	"keywords": [
+		"JavaScript",
+		"Slider"
+	],
+	"author": "Levon Beglaryan",
+	"license": "ISC"
+}

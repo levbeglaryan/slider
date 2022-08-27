@@ -1,0 +1,127 @@
+@font-face {
+	font-family: JetBrains Mono;
+	src: url("../fonts/JetBrainsMono-Medium.ttf") format("ttf");
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: JetBrains Mono;
+}
+
+:root {
+	--minBr: 15px;
+	--minTransition: .35s ease all;
+	--aqua: #4ecdc4;
+	--gray: #556270;
+}
+
+/* global styles */
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	max-width: 500px;
+	min-width: 250px;
+	margin: 2rem auto;
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1.5rem;
+}
+
+.slides {
+	border-radius: var(--minBr);
+	overflow: hidden;
+	height: 500px;
+}
+
+.slides img {
+	object-fit: cover;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.button-container button {
+	position: relative;
+	flex-basis: 100px;
+	height: 40px;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	transition: var(--minTransition);
+	background-color: var(--gray);
+	z-index: 0;
+	overflow: hidden;
+}
+
+.button-container button::after {
+	content: "";
+	position: absolute;
+	width: 0%;
+	height: 100%;
+	right: 0;
+	top: 0;
+	background-color: var(--aqua);
+	transition: var(--minTransition);
+	z-index: -1;
+}
+
+.button-container button:nth-child(2)::after {
+	left: 0;
+}
+
+.button-container button:hover::after {
+	width: 100%;
+}
+
+.dots {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.dot {
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	background-color: var(--aqua);
+	border: 1px solid var(--gray);
+	border: none;
+	border-radius: 50%;
+	filter: grayscale(30%);
+	transition: var(--minTransition);
+}
+
+.dot:hover {
+	background-color: var(--gray);
+}
+
+.dots .active {
+	background-color: #1e5b56;
+}
+
+@media screen and (max-width: 520px) {
+	.container {
+		margin: 2rem 1rem;
+	}
+
+	.slides {
+		height: 300px;
+	}
+
+	.dot {
+		width: 15px;
+		height: 15px;
+	}
+}
