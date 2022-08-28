@@ -34,6 +34,7 @@ img {
 }
 
 .slides {
+	box-shadow: 0 0 50px 1px #000;
 	border-radius: var(--minBr);
 	overflow: hidden;
 	height: 500px;
