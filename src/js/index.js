@@ -1,7 +1,7 @@
-const main = document.getElementById("main");
 const rightBtn = document.getElementById("right");
 const leftBtn = document.getElementById("left");
-const dots = Array.from(document.querySelectorAll(".dots .dot"));
+const dotsContainer = document.getElementById("dots");
+const slideContainer = document.getElementById("slides");
 
 // Data about slide
 const data = {
@@ -17,9 +17,30 @@ const data = {
 		"images/img7.jpg",
 		"images/img8.jpg",
 		"images/img9.jpg",
-		"images/img10.jpg",
+		"images/img10.jpg"
 	]
 };
+
+function setDefault() {
+	// Creating main slide
+	const imgComponent = document.createElement("img");
+	imgComponent.src = data.images[0];
+	imgComponent.id = "main";
+	slideContainer.appendChild(imgComponent);
+	
+	// Creating dots
+	data.images.forEach((val, i) => {
+		const dot = document.createElement("div");
+		if (i === 0) {
+			dot.classList.add("active");
+		}
+		dot.classList.add("dot");
+		dotsContainer.appendChild(dot);
+	});
+}
+
+// Setting main slide and creating dots
+setDefault();
 
 rightBtn.addEventListener("click", () => {
 	data.current++;
@@ -37,6 +58,12 @@ leftBtn.addEventListener("click", () => {
 	update();
 });
 
+// Getting main slide
+const main = document.getElementById("main");
+// Getting all dots from dots-container
+const dots = Array.from(dotsContainer.querySelectorAll(".dot"));
+
+// Changing slide
 function update() {
 	dots.forEach(dot => {
 		dot.classList.remove("active");
@@ -45,6 +72,7 @@ function update() {
 	main.src = data.images[data.current];
 }
 
+// Moving between slides using dots
 dots.forEach((dot, i) => {
 	dot.addEventListener("click", () => {
 		data.current = i;
